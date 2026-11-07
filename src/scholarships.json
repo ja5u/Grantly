@@ -1,0 +1,181 @@
+[
+  {
+    "id": "pm-usp-csss",
+    "name": "PM-USP Central Sector Scholarship",
+    "provider": "Ministry of Education",
+    "type": "Central",
+    "summary": "Merit-cum-means support for students pursuing regular college and university courses. This preview uses fresh-application criteria from the 2025–26 FAQ.",
+    "tags": [
+      "degree",
+      "merit",
+      "income"
+    ],
+    "sourceYear": "2025–26",
+    "partial": true,
+    "source": "https://www.education.gov.in/sites/upload_files/mhrd/files/upload_document/FAQs_PM_USP_CSSS_scheme_AY_2025_26.pdf",
+    "rules": [
+      {
+        "field": "level",
+        "label": "Undergraduate study for a fresh application",
+        "equals": "Undergraduate"
+      },
+      {
+        "field": "percentile",
+        "label": "Above the 80th board percentile in Class XII",
+        "above": 80
+      },
+      {
+        "field": "regular",
+        "label": "Regular course attendance",
+        "equals": "Yes"
+      },
+      {
+        "field": "income",
+        "label": "Family income up to ₹4.5 lakh",
+        "max": 450000
+      },
+      {
+        "field": "aid",
+        "label": "No other scholarship or fee reimbursement",
+        "equals": "No"
+      },
+      {
+        "field": "gap",
+        "label": "No study gap after Class XII",
+        "equals": "No"
+      }
+    ],
+    "documents": [
+      "Income certificate",
+      "Marksheet",
+      "Admission letter"
+    ],
+    "sourceChecked": "2026-11-07"
+  },
+  {
+    "id": "reliance-ug",
+    "name": "Reliance Foundation Undergraduate Scholarship",
+    "provider": "Reliance Foundation",
+    "type": "Private",
+    "summary": "Merit-cum-means support for first-year undergraduate students across subject streams. Review the provider’s full criteria and application process.",
+    "tags": [
+      "degree",
+      "merit",
+      "engineering",
+      "income"
+    ],
+    "sourceYear": "2026–27",
+    "partial": true,
+    "source": "https://scholarships.reliancefoundation.org/UG_Scholarship.aspx",
+    "rules": [
+      {
+        "field": "level",
+        "label": "Undergraduate study",
+        "equals": "Undergraduate"
+      },
+      {
+        "field": "year",
+        "label": "First year of study",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "field": "income",
+        "label": "Household income below ₹15 lakh",
+        "below": 1500000
+      },
+      {
+        "field": "regular",
+        "label": "Regular full-time degree course",
+        "equals": "Yes"
+      }
+    ],
+    "documents": [
+      "Income certificate",
+      "Marksheet",
+      "Admission letter"
+    ],
+    "sourceChecked": "2026-11-07"
+  },
+  {
+    "id": "nmmss",
+    "name": "National Means-cum-Merit Scholarship",
+    "provider": "Ministry of Education",
+    "type": "Central",
+    "summary": "Support for selected secondary-school students. The scheme uses a state or union territory selection test and additional school and marks criteria.",
+    "tags": [
+      "school",
+      "merit",
+      "income"
+    ],
+    "sourceYear": "2025–26 reference",
+    "partial": true,
+    "source": "https://www.education.gov.in/nmms",
+    "benefit": "₹12,000 per year in the published scheme reference",
+    "rules": [
+      {
+        "field": "level",
+        "label": "School education",
+        "equals": "School"
+      },
+      {
+        "field": "income",
+        "label": "Parental income up to ₹3.5 lakh",
+        "max": 350000
+      }
+    ],
+    "documents": [
+      "Income certificate",
+      "Marksheet"
+    ],
+    "sourceChecked": "2026-11-07"
+  },
+  {
+    "id": "telangana-prematric-sc",
+    "name": "Telangana Pre-Matric Scholarship for SC Students",
+    "provider": "Telangana Social Welfare Department",
+    "type": "State",
+    "summary": "Education support for eligible students from Scheduled Caste communities. Use the ePASS portal to check the class-specific scheme and current registration instructions.",
+    "tags": [
+      "school",
+      "telangana",
+      "scheduled caste"
+    ],
+    "sourceYear": "2026–27 registration reference",
+    "partial": true,
+    "source": "https://telanganaepass.cgg.gov.in/PrematricLinks.do",
+    "guidelines": "https://telanganaepass.cgg.gov.in/downloads/SCDD-RTIManual.pdf",
+    "rules": [
+      {
+        "field": "level",
+        "label": "School education",
+        "equals": "School"
+      },
+      {
+        "field": "state",
+        "label": "Telangana residence",
+        "equals": "Telangana"
+      },
+      {
+        "field": "category",
+        "label": "Scheduled Caste category",
+        "equals": "SC"
+      },
+      {
+        "field": "income",
+        "label": "Parental or guardian income up to ₹2 lakh",
+        "max": 200000
+      },
+      {
+        "field": "regular",
+        "label": "Regular school attendance",
+        "equals": "Yes"
+      }
+    ],
+    "documents": [
+      "Income certificate",
+      "Category certificate"
+    ],
+    "sourceChecked": "2026-11-07"
+  }
+]
