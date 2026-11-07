@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { test } from 'node:test';
+import { test } from 'vitest';
 import { daysUntil, match, rank, setStatus, type Scheme } from '../src/domain.ts';
 import { demoProfile, demoSchemes, demoWorkspace, newApplication } from '../src/demo.ts';
 
