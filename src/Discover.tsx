@@ -6,6 +6,9 @@ import { daysUntil, match, rank, type Scheme } from './domain';
 import { useStore } from './store';
 import { EligibilityGraph, Empty, Radar, type Result } from './graphs';
 
+const maxSearchLength = 100;
+const allowedAmounts = new Set(['25000', '50000']);
+
 export const rupees = (amount: number) =>
   new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -39,12 +42,13 @@ export function Discover({ schemes }: { schemes: Scheme[] }) {
     const timer = setTimeout(() => setIntro(false), 2100);
     return () => clearTimeout(timer);
   }, [intro]);
-  const q = params.get('q') ?? '';
+  const q = (params.get('q') ?? '').slice(0, maxSearchLength);
   const provider = params.get('provider') ?? '';
   const level = params.get('level') ?? '';
   const category = params.get('cat') ?? '';
   const course = params.get('course') ?? '';
-  const amount = params.get('amount') ?? '';
+  const requestedAmount = params.get('amount') ?? '';
+  const amount = allowedAmounts.has(requestedAmount) ? requestedAmount : '';
   const closing = params.has('closing');
   const ready = params.has('ready');
   const includeFailed = params.has('all');
@@ -54,7 +58,7 @@ export function Discover({ schemes }: { schemes: Scheme[] }) {
   ).length;
   function change(key: string, value: string, replace = false) {
     const next = new URLSearchParams(params);
-    if (value) next.set(key, value);
+    if (value) next.set(key, key === 'q' ? value.slice(0, maxSearchLength) : value);
     else next.delete(key);
     setParams(next, { replace });
   }
@@ -146,6 +150,7 @@ export function Discover({ schemes }: { schemes: Scheme[] }) {
               <Search size={18} />
               <input
                 value={q}
+                maxLength={maxSearchLength}
                 placeholder="Name, course, provider…"
                 onChange={(event) => change('q', event.target.value, true)}
                 onKeyDown={(event) => {

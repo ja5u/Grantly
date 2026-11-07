@@ -11,15 +11,25 @@ import { StoreProvider } from '../src/store';
 import { demoProfile, demoSchemes, demoWorkspace } from '../src/demo';
 import { match } from '../src/domain';
 
-function mount(children: React.ReactNode) {
+function mount(children: React.ReactNode, initialEntry = '/') {
   localStorage.setItem('grantly:mode', '"demo"');
   localStorage.setItem('grantly:demo:v1', JSON.stringify(demoWorkspace()));
   return render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[initialEntry]}>
       <StoreProvider>{children}</StoreProvider>
     </MemoryRouter>,
   );
 }
+it('ignores unsupported amount filters supplied in the URL', () => {
+  mount(<Discover schemes={demoSchemes} />, '/discover?amount=not-a-number');
+  expect(screen.getByRole('heading', { name: /6 opportunities/ })).toBeVisible();
+});
+it('bounds search terms loaded from the URL', () => {
+  mount(<Discover schemes={demoSchemes} />, '/discover?q=' + 'x'.repeat(150));
+  const search = screen.getByRole('textbox', { name: 'Search scholarships' });
+  expect(search).toHaveAttribute('maxLength', '100');
+  expect((search as HTMLInputElement).value).toHaveLength(100);
+});
 it('opens a graph node by keyboard, adjusts zoom, and resets the viewport', async () => {
   const select = vi.fn();
   const { container } = render(
